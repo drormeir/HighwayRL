@@ -1,0 +1,17 @@
+{
+    "lanes_count": 6,
+    "observation": {    
+        "vehicles_count": 150,
+        "vehicles_density": 75,
+        "type": "GrayscaleObservation",
+        "observation_shape": (128, 128),
+        "stack_size": 4,
+        "weights": [0.2989, 0.5870, 0.1140], 
+        "scaling": 1.75,
+    },
+    "policy_frequency": 2,
+
+    "other_vehicles_type": "highway_env.vehicle.behavior.AggressiveVehicle",
+    "duration": 40,
+    "initial_vehicle_count": 30,
+}

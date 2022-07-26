@@ -1,0 +1,1 @@
+{"replay_buffer": {"sample_every": 2, "buffer_size": 10000, "batch_size": 40}, "Q_network": {"ch_conv1": 16, "ch_conv2": 64, "fc0_out": 180, "fc1_out": 180, "fc2_out": 200}, "gamma": 0.987, "tau": 0.003, "learning_rate": 0.0005, "epsilon_min": 0.01, "epsilon_decay": 0.981, "reward_power": 1.5, "seed": 0}

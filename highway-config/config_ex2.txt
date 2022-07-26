@@ -12,6 +12,6 @@
     "policy_frequency": 2,
 
     "other_vehicles_type": "highway_env.vehicle.behavior.AggressiveVehicle",
-    "duration": 40,
+    "duration": 500,
     "initial_vehicle_count": 30,
 }

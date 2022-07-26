@@ -13,4 +13,4 @@ The agent runs on Python 3.8 + PyTorch. The paper that describes the algorithm i
 Use the Colab notebook "RL_Final_Project_2022.ipynb" or install the python libraries according to "requirements.txt"
 
 # Report
-A detailed report describing the learning algorithm, along with ideas for future work is at [report.md](https://github.com/drormeir/HighwayRL/blob/main/Report.md)
+A detailed report describing the learning algorithm, along with ideas for future work is at [report.pdf](https://github.com/drormeir/HighwayRL/blob/main/Report.pdf)

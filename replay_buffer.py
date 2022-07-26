@@ -12,12 +12,8 @@ class ReplayBuffer:
         assert action_type == int or action_type == float
         self.state_size = state_size
         if action_type == int:  # DQN
-            self.action_begin = 0
-            self.action_end = action_size
             self.action_size = 1
         else:  # action_type == float --> DDPG
-            self.action_begin = None
-            self.action_end = None
             self.action_size = action_size
         self.state_type = state_type
         self.action_type = action_type
@@ -69,9 +65,6 @@ class ReplayBuffer:
         return self.res_states, self.res_actions, self.res_rewards, self.res_next_states, self.res_dones
 
     def add(self, state, action, reward, next_state, done):
-        if self.action_type == int and self.action_size == 1:
-            assert action >= self.action_begin
-            assert action < self.action_end
         ind_pos = self.current_len % self.buffer_size
         self.states[ind_pos, :] = state
         self.actions[ind_pos][0] = action

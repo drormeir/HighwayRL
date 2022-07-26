@@ -7,7 +7,7 @@ import numpy as np
 
 
 class HighwayAgentDQN:
-    def __init__(self, env,
+    def __init__(self, state_size, action_size,
                  seed=0,
                  eps_greedy_min=0.01, eps_greedy_decay=0.981,
                  replay_buffer_size: int = int(1e4),
@@ -29,9 +29,8 @@ class HighwayAgentDQN:
         self.eps_greedy = 1.0
         self.eps_greedy_min = eps_greedy_min
         self.eps_greedy_decay = eps_greedy_decay
-        self.action_size = env.action_size
-        self.state_size = env.state_size
-        self.env_name = env.env_name
+        self.action_size = action_size
+        self.state_size = state_size
         self.reward_power = reward_power
         self.random = np.random.default_rng(seed=seed)
         model_params = {'ch_conv1': ch_conv1, 'ch_conv2': ch_conv2,

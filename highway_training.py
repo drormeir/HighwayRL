@@ -11,7 +11,8 @@ def find_best_lr(env, learning_rates=None, max_episodes=200, print_every_episode
     ret = []
     for lr in learning_rates:
         print(f'Running with learning rate: {lr:4.2e}')
-        highway_agent = HighwayAgentDQN(env, lr=lr, pytorch_device='gpu')
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
+                                        lr=lr, pytorch_device='gpu')
         episodes_score, episodes_length = \
             env.multi_episode_train(highway_agent, max_episodes=max_episodes,
                                     print_every_episode=print_every_episode)
@@ -27,7 +28,8 @@ def find_best_gamma(env, gammas=None, max_episodes=200, print_every_episode=10):
     ret = []
     for gamma in gammas:
         print(f'Running with gamma: {gamma:5.3f}')
-        highway_agent = HighwayAgentDQN(env, gamma=gamma, pytorch_device='gpu')
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
+                                        gamma=gamma, pytorch_device='gpu')
         episodes_score, episodes_length = \
             env.multi_episode_train(highway_agent, max_episodes=max_episodes,
                                     print_every_episode=print_every_episode)
@@ -43,7 +45,8 @@ def find_best_eps_decay(env, eps_decays=None, max_episodes=200, print_every_epis
     ret = []
     for eps_decay in eps_decays:
         print(f'Running with eps_decay: {eps_decay:5.3f}')
-        highway_agent = HighwayAgentDQN(env, eps_greedy_decay=eps_decay,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
+                                        eps_greedy_decay=eps_decay,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
             env.multi_episode_train(highway_agent, max_episodes=max_episodes,
@@ -60,7 +63,7 @@ def find_best_train_every_step(env, train_every_episode_steps=None, max_episodes
     ret = []
     for train_every_episode_step in train_every_episode_steps:
         print(f'Running with train_every_episode_step: {train_every_episode_step}')
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         train_every_episode_steps=train_every_episode_step,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
@@ -77,7 +80,7 @@ def find_best_tau(env, taus=None, max_episodes=200, print_every_episode=10):
     ret = []
     for tau in taus:
         print(f'Running with tau: {tau}')
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         local_tau_weight=tau,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
@@ -96,7 +99,7 @@ def find_best_mini_batch(env, mini_batches=None, max_episodes=200, print_every_e
     for mini_batch in mini_batches:
         print(f'Running with mini_batch: {mini_batch}')
         gc.collect()
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         replay_batch_size=mini_batch,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
@@ -116,7 +119,7 @@ def find_best_ch_conv1(env, ch_conv1s=None, max_episodes=200, print_every_episod
     for ch_conv1 in ch_conv1s:
         print(f'Running with ch_conv1: {ch_conv1}')
         gc.collect()
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         ch_conv1=ch_conv1,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
@@ -136,7 +139,7 @@ def find_best_ch_conv2(env, ch_conv2s=None, max_episodes=200, print_every_episod
     for ch_conv2 in ch_conv2s:
         print(f'Running with ch_conv2: {ch_conv2}')
         gc.collect()
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         ch_conv2=ch_conv2,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
@@ -156,7 +159,7 @@ def find_best_fc0_out(env, fc0_outs=None, max_episodes=200, print_every_episode=
     for fc0_out in fc0_outs:
         print(f'Running with fc0_out: {fc0_out}')
         gc.collect()
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         fc0_out=fc0_out,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
@@ -176,7 +179,7 @@ def find_best_fc1_out(env, fc1_outs=None, max_episodes=200, print_every_episode=
     for fc1_out in fc1_outs:
         print(f'Running with fc1_out: {fc1_out}')
         gc.collect()
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         fc1_out=fc1_out,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = \
@@ -196,7 +199,7 @@ def find_best_fc2_out(env, fc2_outs=None, max_episodes=200, print_every_episode=
     for fc2_out in fc2_outs:
         print(f'Running with fc2_out: {fc2_out}')
         gc.collect()
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         fc2_out=fc2_out,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = env.multi_episode_train(highway_agent, max_episodes=max_episodes,
@@ -215,7 +218,7 @@ def find_best_reward_power(env, reward_powers=None, max_episodes=200, print_ever
     for reward_power in reward_powers:
         print(f'Running with reward_power: {reward_power}')
         gc.collect()
-        highway_agent = HighwayAgentDQN(env,
+        highway_agent = HighwayAgentDQN(state_size=env.state_size, action_size=env.action_size,
                                         reward_power=reward_power,
                                         pytorch_device='gpu')
         episodes_score, episodes_length = env.multi_episode_train(highway_agent, max_episodes=max_episodes,
